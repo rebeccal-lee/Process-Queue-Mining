@@ -29,7 +29,7 @@ class DFGResult:
     act_col: str
     time_col: str
 
-'''
+''' 
 Compute DFGs 
 '''
 def compute_dfg(
