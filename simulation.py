@@ -8,7 +8,6 @@ from typing import Any, Dict, Iterable, Literal, Optional, Sequence, Tuple
 import numpy as np
 import pandas as pd
 
-
 # ============================================================
 # Public data structures
 # ============================================================
