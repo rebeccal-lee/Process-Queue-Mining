@@ -4,10 +4,8 @@ import pandas as pd
 from io import StringIO
 
 st.set_page_config(page_title="Home", layout="wide")
-st.title("Home")
-
-st.header("TimER: An ED Triage Monitoring Dashboard")
-st.write("Upload a CSV to unlock the other pages in the left sidebar.")
+st.title("TimER: An ED Triage Monitoring Dashboard")
+st.write("Upload a CSV to begin.")
 
 @st.cache_data
 def read_csv_from_upload(uploaded_file) -> pd.DataFrame:
