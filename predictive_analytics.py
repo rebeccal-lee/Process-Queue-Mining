@@ -316,6 +316,9 @@ def build_prediction_dataset(
     X = X.set_index(cfg.case_col)
     case_index = X.index.copy()
 
+    if y is not None:
+        y = pd.Series(y.values, index=case_index, name=target_col)
+
     feature_info = {
         "top_activities": top_acts,
         "cutoff_type": cfg.cutoff_type,
