@@ -34,6 +34,8 @@ The system supports:
 - The main landing page for the application.  
 - Handles file upload, column mapping, session state, and connects the dataset to all analytics modules.
 
+--- 
+
 ### discovery.py 
 Automatically generates a Directly-Follows Graph (DFG) from any uploaded CSV event log.  
 Outputs transition frequencies and performance metrics per edge, designed to support interactive drill-down in the UI (e.g., filtering by triage level or zone). 
@@ -79,6 +81,8 @@ Handles sequencing rules for simultaneous events, missingness handling, and norm
 ### load_data.py 
 Loads raw event-log data and stores the user’s mapping for case ID, activity, timestamp, resource, and attributes.  
 Produces a standardized schema compatible with all downstream modules and the dashboard
+
+---
 
 ### pages/ Streamlit UI
 - Contains the interactive dashboard pages.  
