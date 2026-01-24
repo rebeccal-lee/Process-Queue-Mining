@@ -34,57 +34,53 @@ The system supports:
 - The main landing page for the application.  
 - Handles file upload, column mapping, session state, and connects the dataset to all analytics modules.
 
----
-
-### load_data.py
-- Loads and standardizes raw event-log data.  
-- Users map their dataset’s column names (case ID, activity, timestamp, resource, and attributes) and it is transformed into the program's data scheme.
+### discovery.py 
+Automatically generates a Directly-Follows Graph (DFG) from any uploaded CSV event log.  
+Outputs transition frequencies and performance metrics per edge, designed to support interactive drill-down in the UI (e.g., filtering by triage level or zone). 
 
 ---
 
-### event_log_organizer.py
-- Builds patient journeys from the standardized event log.  
-- Applies ordering rules, step definitions, and state normalization to prepare data for analysis.
+### conformance.py 
+Implements basic conformance checking against a user-defined “Standard Protocol” (e.g., Triage → Registration → Assessment).  
+Identifies and summarizes cases that deviate from the expected pathway (skipped steps, unexpected orderings, or detours).
 
 ---
 
-### discovery.py
-- Performs process discovery on patient flows.  
-- Constructs transition graphs, activity frequencies, and pathway statistics to reveal how patients actually move through the ED.
+### queue_mining.py 
+Calculates and visualizes queue lengths and waiting times across shared resources (e.g., zones such as initial zone).  
+Designed to surface operational bottlenecks impacting key KPIs like Time-to-PIA and LWBS risk. 
 
 ---
 
-### queue_mining.py
-- Implements queue-mining and waiting-time analytics.  
-- Builds zone-level queues, computes queue lengths and wait distributions, and generates congestion and throughput visualizations.
+### predictive_analytics.py 
+Builds features from partial patient journeys and predicts operational/clinical outcomes.  
+Supports predictions such as probability of admission, probability of LWBS, and remaining time to PIA. 
 
 ---
 
-### predictive_analytics.py
-- Builds patient-level predictive models.  
-- Uses partial event histories to predict outcomes such as admission risk, LWBS (left without being seen), and remaining time-to-physician.
+### anomaly_detection.py 
+Highlights “red flag” cases such as extremely long waits or unusual event sequences relative to baseline patterns.  
+Used to surface outliers for operational review and escalation workflows.
 
 ---
 
-### anomaly_detection.py
-- Detects abnormal patient trajectories and delays.  
-- Flags unusually long waits, rare pathways, and outlier cases relative to historical patterns.
+### simulation.py 
+Runs scenario-based ED flow simulation using a Bayesian time-to-event framework.  
+It models service and delay durations with Weibull survival distributions, estimates parameters via MCMC, and propagates uncertainty through Monte Carlo sampling to simulate patient trajectories and quantify the impact of capacity changes on wait times and congestion. :contentReference[oaicite:7]{index=7}
 
 ---
 
-### conformance.py
-- Evaluates how observed patient flows deviate from expected or reference processes.  
-- Quantifies skipped steps, delays, and off-path behavior for quality and compliance analysis.
+### event_log_organizer.py 
+Canonicalizes uploaded event logs into consistent, analysis-ready traces.  
+Handles sequencing rules for simultaneous events, missingness handling, and normalization so discovery, conformance, queue mining, and ML operate on the same canonical event representation. :contentReference[oaicite:8]{index=8}
 
 ---
 
-### simulation.py
-- Simulates ED operations under alternative demand and staffing scenarios.  
-- Uses fitted arrival and service-time distributions to estimate how resource changes affect congestion and waiting times.
+### load_data.py 
+Loads raw event-log data and stores the user’s mapping for case ID, activity, timestamp, resource, and attributes.  
+Produces a standardized schema compatible with all downstream modules and the dashboard
 
----
-
-### pages/ (Streamlit UI)
+### pages/ Streamlit UI
 - Contains the interactive dashboard pages.  
 - Each file corresponds to a tab within the program (queue analysis, prediction, simulation, etc.) and generates interactive visual results.
 
