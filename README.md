@@ -68,13 +68,13 @@ Used to surface outliers for operational review and escalation workflows.
 
 ### simulation.py 
 Runs scenario-based ED flow simulation using a Bayesian time-to-event framework.  
-It models service and delay durations with Weibull survival distributions, estimates parameters via MCMC, and propagates uncertainty through Monte Carlo sampling to simulate patient trajectories and quantify the impact of capacity changes on wait times and congestion. :contentReference[oaicite:7]{index=7}
+It models service and delay durations with Weibull survival distributions, estimates parameters via MCMC, and propagates uncertainty through Monte Carlo sampling to simulate patient trajectories and quantify the impact of capacity changes on wait times and congestion. 
 
 ---
 
 ### event_log_organizer.py 
 Canonicalizes uploaded event logs into consistent, analysis-ready traces.  
-Handles sequencing rules for simultaneous events, missingness handling, and normalization so discovery, conformance, queue mining, and ML operate on the same canonical event representation. :contentReference[oaicite:8]{index=8}
+Handles sequencing rules for simultaneous events, missingness handling, and normalization so discovery, conformance, queue mining, and ML operate on the same canonical event representation. 
 
 ---
 
